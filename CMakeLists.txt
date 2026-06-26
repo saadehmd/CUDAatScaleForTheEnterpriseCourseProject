@@ -52,7 +52,9 @@ target_include_directories(image_augmentation_app PRIVATE
                            ${CUDAToolkit_INCLUDE_DIRS}/npp 
                            ${npp_util_headers} 
                            ${cuda_util_headers} 
-                           ${FREEIMAGE_INCLUDE_DIR})
+                           ${FREEIMAGE_INCLUDE_DIR}
+                           ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           )
 
 #print the CUDA include directories for debugging
 message(STATUS "CUDA include directories: ${CUDAToolkit_INCLUDE_DIRS}")
