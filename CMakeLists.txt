@@ -3,7 +3,6 @@ project(MyNppProject LANGUAGES CXX)
 
 # Find the toolkit and its libraries
 find_package(CUDAToolkit REQUIRED)
-#find_package(FreeImage REQUIRED)
 
 # 1. Search for the FreeImage header file
 find_path(FREEIMAGE_INCLUDE_DIR FreeImage.h
@@ -14,6 +13,12 @@ find_path(FREEIMAGE_INCLUDE_DIR FreeImage.h
 find_library(FREEIMAGE_LIBRARY NAMES freeimage freeimaged
     PATHS /usr/lib /usr/local/lib /opt/local/lib
 )
+
+set(OpenCV_INCLUDE_DIRS "/usr/include/opencv4")
+set(OpenCV_LIBS "opencv_core" "opencv_imgcodecs")
+
+# Suppress build warnings
+add_compile_options(-w)
 
 # 3. Verify that both files were actually found
 if(FREEIMAGE_INCLUDE_DIR AND FREEIMAGE_LIBRARY)
@@ -42,6 +47,7 @@ target_link_libraries(image_augmentation_app
         CUDA::nppc
         CUDA::nppif
         ${FREEIMAGE_LIBRARY}
+        ${OpenCV_LIBS}
 )
 
 
@@ -54,6 +60,7 @@ target_include_directories(image_augmentation_app PRIVATE
                            ${cuda_util_headers} 
                            ${FREEIMAGE_INCLUDE_DIR}
                            ${CMAKE_CURRENT_SOURCE_DIR}/include
+                           ${OpenCV_INCLUDE_DIRS}
                            )
 
 #print the CUDA include directories for debugging
