@@ -57,8 +57,6 @@ int main(int argc, char *argv[])
                 if (augmented_image.size() != device_image.size())
                 {
                     augmented_image = npp::ImageNPP_8u_C3(device_image.size());
-                    // Zero out device memory to avoid uninitialized data
-                    // cudaMemset(augmented_image.data(), 0, augmented_image.pitch() * augmented_image.height());
                 }
 
                 std::cout << "Processing image: " << image_path << " with size: " << device_image.width() << "x"
@@ -66,6 +64,9 @@ int main(int argc, char *argv[])
                 // Randomly select an augmentation to apply to the image - With equal probability for each augmentation
                 size_t aug_index = std::uniform_int_distribution<size_t>(0, augmentations.size() - 1)(rng);
                 const auto &augmentation = augmentations.at(aug_index);
+                // Zero out device memory to avoid uninitialized data
+                NPP_CHECK_CUDA(
+                    cudaMemset(augmented_image.data(), 0, augmented_image.pitch() * augmented_image.height()));
                 applyAugmentation(augmentation, device_image, augmented_image);
                 std::ostringstream aug_name;
                 aug_name << augmentation;

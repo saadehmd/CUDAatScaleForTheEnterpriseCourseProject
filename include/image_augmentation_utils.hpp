@@ -274,9 +274,6 @@ bool loadImageToDevice(const std::string &image_path, npp::ImageNPP_8u_C3 &devic
     // std::cout << "Loaded image: " << image_path << " with size: " << host_image.cols << "x" << host_image.rows <<
     // "\n";
     device_image = npp::ImageNPP_8u_C3(host_image.cols, host_image.rows);
-
-    // Zero out device memory to avoid uninitialized data
-    // cudaMemset(device_image.data(), 0, device_image.pitch() * device_image.height());
     device_image.copyFrom(host_image.data, host_image.step);
 
     return true;
