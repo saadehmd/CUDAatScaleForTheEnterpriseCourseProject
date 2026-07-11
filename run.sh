@@ -1,0 +1,1 @@
+./build/image_augmentation_app --input_dir ./dataset/container_dataset/ --output_dir ./dataset/container_dataset/output/ --all_augmentations

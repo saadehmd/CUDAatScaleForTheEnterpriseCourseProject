@@ -1,3 +1,11 @@
+/** Author: Saad Ahmad
+ * Coursera Course: CUDA at Scale For the Enterprise, course project.
+ * This file contains the implementation of various image augmentation functions using NVIDIA Performance Primitives
+ * (NPP) library. The augmentations include random rotation, translation, cropping and resizing, brightness adjustment,
+ * and blurring. Each function takes an input image and produces an output image with the specified augmentation
+ * applied. The augmentations are designed to be applied to images in batches for efficient processing on CUDA-enabled
+ * GPUs.
+ */
 #pragma once
 
 #include <ImageIO.h>

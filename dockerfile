@@ -3,4 +3,3 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y libfreeimage3 libfreeimage-dev cmake build-essential git wget && rm -rf /var/lib/apt/lists/*
 RUN apt-get update && apt-get install -y libopencv-core-dev libopencv-imgcodecs-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /project
-RUN git clone https://github.com/NVIDIA/cuda-samples.git /project/cuda-samples

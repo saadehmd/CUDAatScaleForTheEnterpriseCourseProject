@@ -1,6 +1,8 @@
 
-/** This is a toy image augmentation application, created for the coursera assignment and for understanding basic image
- * processing concepts using NVIDIA's NPP library. */
+/** Author: Saad Ahmad
+ * Coursera Course: CUDA at Scale For the Enterprise, course project.
+ * Brief: This is a toy image augmentation application, created for the coursera assignment and for understanding basic
+ * image processing concepts using NVIDIA's NPP library. */
 
 #include <string.h>
 

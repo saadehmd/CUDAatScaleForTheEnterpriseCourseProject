@@ -1,7 +1,9 @@
+*.JPG
 *.i
 *.ii
 *.gpu
 *.ptx
 *.cubin
 *.fatbin
+/project/dataset/**
 build/**

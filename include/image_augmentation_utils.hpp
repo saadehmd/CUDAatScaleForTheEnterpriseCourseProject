@@ -1,3 +1,10 @@
+/**
+ * Author: Saad Ahmad
+ * Coursera Course: CUDA at Scale For the Enterprise, course project.
+ * This file contains utility functions for image augmentation, including parsing command line arguments, loading and
+ * saving images, and batching images for processing. The utilities are designed to work with NVIDIA Performance
+ * Primitives (NPP) library and OpenCV.
+ */
 #pragma once
 
 #include <filesystem>
@@ -8,13 +15,6 @@
 #include <set>
 
 #include "image_augmentations.hpp"
-
-void debugCout(std::ostream &os)
-{
-#ifdef DEBUG
-    os << message;
-#endif
-}
 
 const std::set<std::string> valid_extensions = {".jpg", ".jpeg", ".png", ".bmp", ".pgm"};
 enum class AugmentationType
@@ -271,8 +271,7 @@ bool loadImageToDevice(const std::string &image_path, npp::ImageNPP_8u_C3 &devic
     {
         return false;
     }
-    // std::cout << "Loaded image: " << image_path << " with size: " << host_image.cols << "x" << host_image.rows <<
-    // "\n";
+
     device_image = npp::ImageNPP_8u_C3(host_image.cols, host_image.rows);
     device_image.copyFrom(host_image.data, host_image.step);
 
